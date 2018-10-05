@@ -103,10 +103,10 @@ class Hours extends Component {
                   <TableBody displayRowCheckbox={false}>
                     {uniqueUsersArray.map((item) =>
                       <TableRow key={item.user_id}>
-                        <TableRowColumn style={{fontSize:17}}>{item.first_name} {item.last_name}</TableRowColumn>
-                        <TableRowColumn style={{fontSize:17}}>{Math.floor((item.minutes_worked)/60)}</TableRowColumn>
-                        <TableRowColumn style={{fontSize:17}}>{item.shift_count}</TableRowColumn>
-                        <TableRowColumn style={{fontSize:17}}>{<Link to={`/users/${item.user_id}`}><FlatButton backgroundColor={orange300}>Go</FlatButton></Link>}</TableRowColumn>
+                        <TableRowColumn style={{fontSize:25}}>{item.first_name} {item.last_name}</TableRowColumn>
+                        <TableRowColumn style={{fontSize:25}}>{Math.floor((item.minutes_worked)/60)}</TableRowColumn>
+                        <TableRowColumn style={{fontSize:25}}>{item.shift_count}</TableRowColumn>
+                        <TableRowColumn style={{fontSize:25}}>{<Link to={`/users/${item.user_id}`}><FlatButton backgroundColor={orange300}>Go</FlatButton></Link>}</TableRowColumn>
                       </TableRow>
                     )}
                   </TableBody>
@@ -120,11 +120,15 @@ class Hours extends Component {
   }
 
   render() {
+    let hoursMargin = '100px';
+    if(this.state.currentFilterHours) {
+      hoursMargin = 0;
+    }
       return (
         <div>
-          <Header />
+          <Header/>
           <br/>
-          <Typography variant="display3" gutterBottom align="center">
+          <Typography variant="display3"  style={{marginTop: hoursMargin}} gutterBottom align="center">
             Hours
           </Typography>
           {((this.state.currentFilterHours || this.state.currentQuery) ? (
